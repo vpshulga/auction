@@ -14,10 +14,12 @@ import {ProductService} from './services/product.service';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductDetailComponent} from './components/product-detail/product-detail.component';
 import {HomeComponent} from './components/home/home.component';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'products/:prodTitle', component: ProductDetailComponent}
+  {path: 'products/:productId', component: ProductDetailComponent}
 ];
 
 @NgModule({
@@ -31,12 +33,15 @@ const routes: Routes = [
     SearchComponent,
     StarsComponent,
     ProductDetailComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [ApplicationComponent]
